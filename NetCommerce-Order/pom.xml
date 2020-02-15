@@ -10,7 +10,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.net.commerce.order</groupId>
-	<artifactId>net_commernce_order</artifactId>
+	<artifactId>net.commernce.order.service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>NetCommerce-Order</name>
 	<description>NetCommerce-EurekaProject</description>

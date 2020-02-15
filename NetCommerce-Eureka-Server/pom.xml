@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.net.commerce</groupId>
-	<artifactId>net_commernce</artifactId>
+	<artifactId>net.commerce.eureka.server</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>NetCommerce-Eureka-Server</name>
 	<description>NetCommerce-EurekaProject</description>

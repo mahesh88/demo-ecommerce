@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.net.commerce</groupId>
-	<artifactId>net.commerce.product.service</artifactId>
+	<artifactId>net.commerce.zull.service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>net_commerce_zool_gateway</name>
 	<description>Net Commerce Zool API Gateway</description>
