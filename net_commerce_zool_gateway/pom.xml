@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.net.commerce</groupId>
 	<artifactId>net.commerce.zull.service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<name>net_commerce_zool_gateway</name>
 	<description>Net Commerce Zool API Gateway</description>
 
@@ -60,6 +60,25 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>dockerfile-maven-plugin</artifactId>
+				<version>1.4.10</version>
+				<executions>
+					<execution>
+						<id>default</id>
+						<goals>
+							<goal>build</goal>
+							<!-- <goal>push</goal> -->
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<repository>ecommerce/${project.name}</repository>
+					<tag>${project.version}</tag>
+					<skipDockerInfo>false</skipDockerInfo>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
