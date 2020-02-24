@@ -1,0 +1,54 @@
+version: '3.7'
+services:
+  orderapplication:
+    image: ecommerce/netcommerce.order.service:1.0.0
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on: 
+      - eureka 
+      - productservice
+    environment:
+      EUREKA_HOST: eureka
+      EUREKA_PORT: 8761
+    networks:
+      - commerce-network
+
+  eureka:
+    image: ecommerce/netcommerce.eureka.server:1.0.0
+    ports:
+      - "8761:8761"
+    restart: always
+    networks:
+      - commerce-network
+
+  zullapi:
+   image: ecommerce/net_commerce_zool_gateway:1.0.0
+   ports: 
+     - "8083:8080"
+   restart: always
+   depends_on: 
+    - eureka
+    - orderapplication
+    - productservice
+   environment: 
+     EUREKA_HOST: eureka
+     EUREKA_PORT: 8761 
+   networks:
+    - commerce-network
+    
+  productservice:
+    image: ecommerce/netcommerce.product.service:1.0.0
+    ports:
+     - "8081:8080"
+    networks: 
+     - commerce-network
+    depends_on:
+     - eureka
+    environment:
+     EUREKA_HOST: eureka
+     EUREKA_PORT: 8761 
+     
+
+networks:
+  commerce-network:

@@ -4,6 +4,8 @@ package com.net.commerce.order.rest.controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,11 +33,12 @@ public class NetCommerceBasketRestResource {
 	@Autowired
 	BasketItemJpaRepository itemRepository;
 	
-	
+	private Logger logger = LoggerFactory.getLogger(NetCommerceBasketRestResource.class);
 
 	
 	@PostMapping("/netcom/basket")
 	public String createBasket()  {
+		logger.info("Create Basket API Called");
 		Basket basket = basketRepository.save(new Basket());
 		return basket.getId();
 	}
@@ -47,6 +50,7 @@ public class NetCommerceBasketRestResource {
 	
 	@GetMapping("/netcom/basket/{basketID}")
 	public BasketRO getBasket(@PathVariable String basketID) {
+	   logger.info("Get Basket API Called" + basketID);
 	   Optional<Basket> basketOpt  = this.basketRepository.findById(basketID);
 	   if(basketOpt.isPresent()) {
 		   Basket basket = basketOpt.get();
@@ -59,7 +63,7 @@ public class NetCommerceBasketRestResource {
 	
 	@PutMapping("/netcom/basket/{basketID}/{productID}")
 	public String addProductToBasket(@PathVariable String basketID,@PathVariable String productID) {
-		 System.out.println("BasketID is " + basketID);
+		 logger.info("Add Product To Basket API Called with Basket ID {} and Product ID {} " , basketID , productID);
 		 Optional<Basket> basketOpt = basketRepository.findById(basketID);
 		 if(basketOpt.isPresent()) {
 			 Basket basket = basketOpt.get();
